@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{1db78110-f391-434b-bdc2-59043f750099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameScreens">
+      <UniqueIdentifier>{942179c8-e37e-4ac4-bd94-d8f8da368187}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{42b940f3-7fe1-4b41-9ce3-dc442f9b1ea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{f9d29cfa-e7f2-4a11-94f8-e93dad6b092e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextureLoader">
+      <UniqueIdentifier>{d3b5610b-fa31-4136-9831-82b194e74b2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextureLoader\objLoader">
+      <UniqueIdentifier>{c1c89a06-afda-499d-83cc-b70000d00ede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextureLoader\SOIL">
+      <UniqueIdentifier>{4460cf90-b1af-4741-be90-24edb2058b75}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OpenGLWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\ErrorLog.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\Matrix.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\Vector.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ScreenManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entity.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\LoadFile.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\objloader\list.cpp">
+      <Filter>Source Files\TextureLoader\objLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\objloader\obj_parser.cpp">
+      <Filter>Source Files\TextureLoader\objLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\objloader\objLoader.cpp">
+      <Filter>Source Files\TextureLoader\objLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\objloader\string_extra.cpp">
+      <Filter>Source Files\TextureLoader\objLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\SOIL\image_DXT.c">
+      <Filter>Source Files\TextureLoader\SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\SOIL\image_helper.c">
+      <Filter>Source Files\TextureLoader\SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\SOIL\SOIL.c">
+      <Filter>Source Files\TextureLoader\SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\SOIL\stb_image_aug.c">
+      <Filter>Source Files\TextureLoader\SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InputManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PhysicsManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Player.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FrameBuffer.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shader.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MeshObject.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CollisionManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Ball.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game.cpp">
+      <Filter>Source Files\GameScreens</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Net.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BitmapFont.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TextManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\CommonHeader.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OpenGLWindow.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\ErrorLog.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\Matrix.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\Vector.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ScreenManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game.h">
+      <Filter>Source Files\GameScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entity.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Screen.h">
+      <Filter>Source Files\GameScreens</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\LoadFile.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\objloader\list.h">
+      <Filter>Source Files\TextureLoader\objLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\objloader\obj_parser.h">
+      <Filter>Source Files\TextureLoader\objLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\objloader\objLoader.h">
+      <Filter>Source Files\TextureLoader\objLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\objloader\string_extra.h">
+      <Filter>Source Files\TextureLoader\objLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\SOIL\stbi_DDS_aug_c.h">
+      <Filter>Source Files\TextureLoader\SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\SOIL\image_DXT.h">
+      <Filter>Source Files\TextureLoader\SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\SOIL\image_helper.h">
+      <Filter>Source Files\TextureLoader\SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\SOIL\SOIL.h">
+      <Filter>Source Files\TextureLoader\SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\SOIL\stb_image_aug.h">
+      <Filter>Source Files\TextureLoader\SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\SOIL\stbi_DDS_aug.h">
+      <Filter>Source Files\TextureLoader\SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Player.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InputManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PhysicsManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FrameBuffer.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shader.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MeshObject.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CollisionManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Ball.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Net.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BitmapFont.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TextManager.h">
+      <Filter>Source Files\Managers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\Resources\crate.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\Resources\shader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\Resources\colorShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\Resources\bluetexture.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\Resources\crate2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\Resources\StadiumTexture.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\Resources\redtexture.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\Resources\soccerTexture.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\Resources\BlueNet.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\Resources\RedNet.png">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Source\Resources\Barrel_v2.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\car1.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\SoccerStadium.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\skySphere.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\SoccerStadium2.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\Soccerball.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\SoccerNet.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\NetBack.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\NetTop.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\NetFrame.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\NetSide1.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\NetSide2.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+    <Object Include="Source\Resources\NetFrame2.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
+  </ItemGroup>
+</Project>
