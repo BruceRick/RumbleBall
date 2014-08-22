@@ -1,8 +1,6 @@
 #ifndef __ENTITY_H__
 #define __ENTITY_H__
 
-
-
 class Entity
 {
 public:
@@ -19,18 +17,12 @@ public:
 	Vector3 *mVelocity;
 	Vector3 *mPosition;
 
-
-
 protected:
-	
 	Material* mMaterial;
 	MeshObject* mModel;
 	Shader* mShader;
 	GLuint mTextureID;
 	Vector4 *mRotation;
-	
-
 };
 
 #endif
-

@@ -12,13 +12,11 @@ struct MinMaxVerts
 	float Width;
 	float Height;
 	float Length;
-
 };
 
 class MeshObject
 {
 public:
-
 	VertDef* m_pVerts;
 	GLushort* m_pIndices;
     int m_NumIndices;
@@ -28,9 +26,7 @@ public:
     MeshObject();
     virtual ~MeshObject();
 
-    
     void LoadFromOBJ(char* filename, float pScale);
-
 };
 
 #endif

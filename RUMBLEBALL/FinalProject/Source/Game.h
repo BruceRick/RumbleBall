@@ -1,8 +1,6 @@
 #ifndef __GAME_H__
 #define __GAME_H__
 
-
-
 class Game : Screen
 {
 public:
@@ -15,22 +13,18 @@ public:
 	void Draw();
 
 private:
-	
 	Player* mPlayer;
 	Player* mPlayer2;
 	Ball* mBall;
 	Entity* mStadium;
 	Entity* mSkySphere;
-	
+
 	Net* mTeam1Net;
 	Net* mTeam2Net;
 
 	float mCameraDistance;
 	PhysicsManager* mPhysicsManager;
 	std::vector<Entity*> mEntityList;
-
-
 };
 
 #endif
-

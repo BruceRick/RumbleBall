@@ -19,10 +19,6 @@ public:
 
 private:
 	std::vector<Screen*> mActiveScreens;
-
-
-
 };
 
 #endif
-

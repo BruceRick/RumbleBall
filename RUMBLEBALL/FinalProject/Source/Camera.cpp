@@ -12,21 +12,15 @@ Camera::Camera()
 	//m_CameraPos->Set(0.0f , 10.0f, 15.0f);
 	//float ratio = (float)gWindow->width()/gWindow->height();
 	//m_matPerspective->SetPerspective( 90, ratio, 1.0f, 100000);
-
 }
 
 Camera::~Camera()
 {
-
 }
-
 
 void Camera::Initialize()
 {
-
-
 }
-
 
 Vector3* Camera::Position()
 {

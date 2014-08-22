@@ -7,7 +7,6 @@ public:
 	Player(PlayerKeys* pPlayerKeys, const char* pCarTexture, Vector3* pPosition);
 	~Player();
 
-
 	void Initialize();
 	void PullShaderHandles();
 	void RenderSetup(Matrix* pWVP);
@@ -23,11 +22,7 @@ public:
 	virtual void Update(double pElapsedTime);
 	virtual void Draw();
 
-
-
 private:
-	
-	
 	InputManager* mInputState;
 	HANDLE mRotateLeftThread;
 	HANDLE mRotateRightThread;
@@ -36,4 +31,3 @@ private:
 };
 
 #endif
-

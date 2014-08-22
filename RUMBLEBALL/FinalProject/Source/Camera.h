@@ -14,7 +14,6 @@ public:
 	Vector3* Position();
 	void SetPosition(Vector3* pPosition);
 
-
 	Matrix* GetPerspective();
 	Matrix* GetOrth();
 	Matrix* GetViewProjection();
@@ -30,13 +29,6 @@ private:
 	Matrix* m_matPerspective;
 	Matrix* m_matOrth;
 	Matrix* m_matViewProj;
-	
-
-
-
-
-
-
 };
 
 #endif

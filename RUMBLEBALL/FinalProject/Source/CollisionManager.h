@@ -13,11 +13,6 @@ public:
 	~CollisionManager();
 
 	bool isCollided(Entity* pEntity1, Entity* pCollidiedEntity);
-
-private:
-
-
-
 };
 
 #endif

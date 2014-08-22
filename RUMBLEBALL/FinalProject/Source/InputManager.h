@@ -15,15 +15,12 @@ public:
 	PlayerKeys* getPlayerInput();
 
 private:
-	
 	HANDLE mThrottleEvent;
 	HANDLE mRotateLeftEvent;
 	HANDLE mRotateRightEvent;
 	HANDLE mNoKeyDownEvent;
 	HANDLE mInputThread;
 	PlayerKeys* mPlayerInput;
-
 };
 
 #endif
-

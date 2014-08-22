@@ -21,18 +21,14 @@ public:
 	ScreenManager GetScreenManager();
 	void OneTimeInit();
 	void DrawFrameBuffer();
-	
-	
-	
-private:
 
+private:
 	FrameBuffer* m_pFBO;
 	Shader *aShader;
 	ScreenManager* mScreenManager; 
 	CollisionManager* mCollisionManager;
 	TextManager* m_TextManager;
 	Game* mGame;
-
 
 	int m_ScreenWidth;
 	int m_ScreenHeight;
@@ -42,12 +38,6 @@ private:
 	Camera* mCamera;
 	//ShaderBase* m_pShader;
 	Shader* mShader;
-
-
-
-
-
-
 };
 
 #endif

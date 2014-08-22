@@ -1,31 +1,23 @@
 #include "CommonHeader.h"
 
-
 Net::Net()
 {
-	
-	
-	
 	mNetBack = new MeshObject();
 	mNetFrame = new MeshObject();
 	mNetSide1 = new MeshObject();
 	mNetSide2 = new MeshObject();
 	mNetTop = new MeshObject();
-	
 }
 
 Net::~Net()
 {
-	
 }
 
 void Net::Initialize(Vector3 *aPosition, const char* aTexture)
 {
 	mVelocity = new Vector3(-1,-1,-1);
 
-
 	mPosition = aPosition;
-	
 
 	//load individual net parts in order to handle ball hitting different parts (Post vs back of net);
 
@@ -40,7 +32,6 @@ void Net::Initialize(Vector3 *aPosition, const char* aTexture)
 	//m_NetModels.push_back(mNetSide2);
 	//m_NetModels.push_back(mNetTop);
 	mModel = mNetBack;
-	
 
 	mShader = new Shader("Source/Resources/shader.glsl");
 	mShader->LoadShaderProgram();
@@ -56,12 +47,10 @@ void Net::Initialize(Vector3 *aPosition, const char* aTexture)
 
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
-
 }
 
 void Net::PullShaderHandles()
 {
-
 	if(mShader->getProgramHandle())
 	{
 		mShader->setUniformLocation("u_WorldViewProj");
@@ -69,11 +58,9 @@ void Net::PullShaderHandles()
 		mShader->setAttributeLocation("a_Position");
 		mShader->setAttributeLocation("a_Tint");
 		mShader->setAttributeLocation("a_UVCoord");
-
 	}
-
-
 }
+
 void Net::RenderSetup(Matrix* pWVP)
 {
 	glUseProgram(mShader->getProgramHandle());
@@ -107,10 +94,8 @@ void Net::Draw()
     // draw mesh
     {
 		objpos.SetIdentity();
-		
-		
+
 		//objpos.Rotate(mRotation->x,mRotation->y,mRotation->z,mRotation->w);
-		
 
 		objpos.SetPosition(*mPosition);
 		worldviewproj = objpos;
@@ -119,20 +104,16 @@ void Net::Draw()
 
 		worldviewproj.Multiply( &viewProj );
 
-
 		RenderSetup(&worldviewproj);
 		GLuint PositionHandle = mShader->getAttribute("a_Position");
 		GLuint TintHandle = mShader->getAttribute("a_Tint");
 		GLuint UVHandle = mShader->getAttribute("a_UVCoord");
 
-
 		for(int i = 0; i < m_NetModels.size(); i++)
 		{
-
 			if(PositionHandle != -1)
 			{
 				glVertexAttribPointer(PositionHandle, 3, GL_FLOAT, GL_FALSE, sizeof(VertDef), m_NetModels.at(i)->m_pVerts->pos );
-
 				glEnableVertexAttribArray( PositionHandle );
 			}
 
@@ -148,15 +129,9 @@ void Net::Draw()
 				glEnableVertexAttribArray( UVHandle );
 			}
 
-		
 			glDrawElements(GL_TRIANGLES, m_NetModels.at(i)->m_NumIndices, GL_UNSIGNED_SHORT, m_NetModels.at(i)->m_pIndices);
 		}
-
-		
-
-
 	}
-
 
 	mShader->DisableAttributes();
 }

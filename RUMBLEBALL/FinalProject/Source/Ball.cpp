@@ -1,27 +1,19 @@
 #include "CommonHeader.h"
 
-
 Ball::Ball()
 {
-	
-	
 	mRotation = new Vector4(0,0,1,0);
 	mRotationRate = new Vector3(0,0,0);
-	
-	
 }
 
 Ball::~Ball()
 {
-	
 }
 
 void Ball::Initialize()
 {
-
 	mPosition = new Vector3(0, 100.0f, 0.0f);
 	mVelocity = new Vector3(0,0,0);
-	
 
 	mShader = new Shader("Source/Resources/shader.glsl");
 	mShader->LoadShaderProgram();
@@ -40,9 +32,6 @@ void Ball::Initialize()
 
 	mModel = new MeshObject();
 	mModel->LoadFromOBJ("Source/Resources/Soccerball.obj",10.0f);
-	
-	
-
 }
 
 void Ball::PullShaderHandles()
@@ -54,24 +43,15 @@ void Ball::PullShaderHandles()
 		mShader->setAttributeLocation("a_Position");
 		mShader->setAttributeLocation("a_Tint");
 		mShader->setAttributeLocation("a_UVCoord");
-
 	}
-
-	
 }
 
 void Ball::Update(double pElapsedTime)
 {
-	
 	mTimeElapsed = pElapsedTime;
-	
-	
-	
+
 	mRotationRate->z += mVelocity->z;
 	mRotationRate->x += mVelocity->x;
-	
-
-
 }
 
 void Ball::RenderSetup(Matrix* pWVP)
@@ -92,25 +72,19 @@ void Ball::RenderSetup(Matrix* pWVP)
 		glBindTexture( GL_TEXTURE_2D, mTextureID);
 		glUniform1i( TexColHandle, 0);
 	}
-		
 }
 
 void Ball::Draw()
 {
-
 	Matrix objpos;
     Matrix worldviewproj;
 	Matrix rotation;
     // draw mesh
     {
 		objpos.SetIdentity();
-		
-		
 
 		while( mRotationRate->x < 0 ) mRotationRate->x += 360;
 		while( mRotationRate->x > 360 ) mRotationRate->x -= 360;
-
-		
 
 		mRotation->Set(mRotationRate->z,0, mRotationRate->x, 0);
 
@@ -118,12 +92,8 @@ void Ball::Draw()
 
 		//objpos.Rotate(angle,0,0,0);
 
-		
-
 		objpos.Rotate( mRotation->x,mRotation->x,0,0);
 		objpos.Rotate( mRotation->z,0,0,mRotation->z);
-		
-		
 
 		mPosition->x += mVelocity->x;
 		mPosition->z += mVelocity->z;
@@ -134,7 +104,6 @@ void Ball::Draw()
 		Matrix viewProj = *gCamera->GetViewProjection();
 
 		worldviewproj.Multiply( &viewProj );
-
 
 		RenderSetup(&worldviewproj);
 		GLuint PositionHandle = mShader->getAttribute("a_Position");
@@ -161,13 +130,9 @@ void Ball::Draw()
 		}
 
 		glDrawElements(GL_TRIANGLES, mModel->m_NumIndices, GL_UNSIGNED_SHORT, mModel->m_pIndices);
-
-
 	}
 
-
 	mShader->DisableAttributes();
-
 }
 
 Vector3* Ball::GetPosition()
@@ -194,6 +159,3 @@ void Ball::SetVelocity(Vector3* pVelocity)
 {
 	mVelocity = pVelocity;
 }
-
-
-

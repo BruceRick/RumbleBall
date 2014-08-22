@@ -1,6 +1,5 @@
 #include "CommonHeader.h"
 
-
 Player::Player(PlayerKeys* pPlayerKeys, const char* pCarTexture, Vector3* pPosition)
 {
 	mInputState = new InputManager(pPlayerKeys);
@@ -8,7 +7,6 @@ Player::Player(PlayerKeys* pPlayerKeys, const char* pCarTexture, Vector3* pPosit
 	mRotation = new Vector4(0,0,1,0);
 	mRotationRate = 0;
 	mCarTexture = pCarTexture;
-	
 }
 
 Player::~Player()
@@ -20,23 +18,16 @@ Player::~Player()
 
 DWORD WINAPI Throttle(LPVOID lpParam)
 {
-
-
-
-
 	Player* player = (Player*)lpParam;
 
 	while(true)
 	{
 		WaitForSingleObject(player->GetInputState()->getThrottleEvent(),INFINITE);
-		
 
 		Vector3 velocity = *player->GetVelocity();
 
 		// when the user wants to move forward:
 		double angle = player->mRotationRate * PI / 180;
-
-		
 
 		velocity.x += cos( angle ) * 20 *player->mTimeElapsed;
 		velocity.z += sin( angle ) * 20 *player->mTimeElapsed;
@@ -53,11 +44,8 @@ DWORD WINAPI Throttle(LPVOID lpParam)
 		//	 velocity.z *= 0.5 / totalvelocity;
 		//}
 
-		
 		//position.z += 0.7f;
 		player->SetVelocity(&velocity);
-		
-
 	}
 }
 
@@ -73,7 +61,6 @@ DWORD WINAPI RotateLeft(LPVOID lpParam)
 	}
 }
 
-
 DWORD WINAPI RotateRight(LPVOID lpParam)
 {
 	Player* player = (Player*)lpParam;
@@ -88,7 +75,6 @@ DWORD WINAPI RotateRight(LPVOID lpParam)
 
 void Player::Initialize()
 {
-
 	//mPosition = new Vector3(0, 60.0f, 0.0f);
 	mVelocity = new Vector3(0,0,0);
 	mInputState->Initialize();
@@ -111,8 +97,6 @@ void Player::Initialize()
 	mThrottleThread = CreateThread(NULL, 0, Throttle, this, 0, NULL);
 	mRotateLeftThread = CreateThread(NULL, 0, RotateRight, this, 0, NULL);
 	mRotateRightThread = CreateThread(NULL, 0, RotateLeft, this, 0, NULL);
-	
-
 }
 
 void Player::PullShaderHandles()
@@ -124,15 +108,11 @@ void Player::PullShaderHandles()
 		mShader->setAttributeLocation("a_Position");
 		mShader->setAttributeLocation("a_Tint");
 		mShader->setAttributeLocation("a_UVCoord");
-
 	}
-
-	
 }
 
 void Player::Update(double pElapsedTime)
 {
-	
 	mTimeElapsed = pElapsedTime;
 	mInputState->Update();
 	std::stringstream ss;
@@ -142,7 +122,6 @@ void Player::Update(double pElapsedTime)
 
 	//ErrorLog(velocity.c_str());
 	//ErrorLog("\n");
-
 }
 
 void Player::RenderSetup(Matrix* pWVP)
@@ -163,20 +142,16 @@ void Player::RenderSetup(Matrix* pWVP)
 		glBindTexture( GL_TEXTURE_2D, mTextureID);
 		glUniform1i( TexColHandle, 0);
 	}
-		
 }
 
 void Player::Draw()
 {
-
 	Matrix objpos;
     Matrix worldviewproj;
 	Matrix rotation;
     // draw mesh
     {
 		objpos.SetIdentity();
-		
-		
 
 		//while( mRotationRate < 0 ) mRotationRate += 360;
 		//while( mRotationRate > 360 ) mRotationRate -= 360;
@@ -184,7 +159,6 @@ void Player::Draw()
 		mRotation->Set(mRotationRate,mRotation->y, mRotation->z, mRotation->w);
 
 		objpos.Rotate(mRotation->x + 270,mRotation->y,mRotation->z,mRotation->w);
-		
 
 		mPosition->x += mVelocity->x;
 		mPosition->z += mVelocity->z;
@@ -196,7 +170,6 @@ void Player::Draw()
 
 		worldviewproj.Multiply( &viewProj );
 
-
 		RenderSetup(&worldviewproj);
 		GLuint PositionHandle = mShader->getAttribute("a_Position");
 		GLuint TintHandle = mShader->getAttribute("a_Tint");
@@ -205,7 +178,6 @@ void Player::Draw()
 		if(PositionHandle != -1)
 		{
 			glVertexAttribPointer(PositionHandle, 3, GL_FLOAT, GL_FALSE, sizeof(VertDef), &mModel->m_pVerts->pos );
-
 			glEnableVertexAttribArray( PositionHandle );
 		}
 
@@ -222,15 +194,10 @@ void Player::Draw()
 		}
 
 		glDrawElements(GL_TRIANGLES, mModel->m_NumIndices, GL_UNSIGNED_SHORT, mModel->m_pIndices);
-
-
 	}
 
-
 	mShader->DisableAttributes();
-
 }
-
 
 InputManager* Player::GetInputState()
 {
@@ -261,6 +228,3 @@ void Player::SetVelocity(Vector3* pVelocity)
 {
 	mVelocity = pVelocity;
 }
-
-
-
