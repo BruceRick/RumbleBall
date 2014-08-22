@@ -6,13 +6,10 @@ TextManager::TextManager()
 {
 	gTextManager = this;
 	m_FontTextureID = -1;
-	
-
 }
 
 TextManager::~TextManager()
 {
-
 }
 
 void TextManager::DrawText(char a_StringToDraw[], float a_Height, int a_Justification, Vector3 a_Color, Vector3 a_Position, Camera* a_Camera)
@@ -21,8 +18,6 @@ void TextManager::DrawText(char a_StringToDraw[], float a_Height, int a_Justific
     GLushort indicies[1000];
 
 	int indexcount = m_pFont->GenerateVerts( a_StringToDraw, verts, indicies, a_Height, a_Justification, a_Color);
-
-
 
 	Matrix objpos;
     Matrix worldviewproj;
@@ -38,7 +33,6 @@ void TextManager::DrawText(char a_StringToDraw[], float a_Height, int a_Justific
 
 	worldviewproj.Multiply( &viewProj );
 
-
 	RenderSetup(&viewProj);
 	GLuint PositionHandle = m_Shader->getAttribute("a_Position");
 	GLuint TintHandle = m_Shader->getAttribute("a_Tint");
@@ -47,7 +41,6 @@ void TextManager::DrawText(char a_StringToDraw[], float a_Height, int a_Justific
 	if(PositionHandle != -1)
 	{
 		glVertexAttribPointer(PositionHandle, 3, GL_FLOAT, GL_FALSE, sizeof(VertDef), &verts->pos );
-
 		glEnableVertexAttribArray( PositionHandle );
 	}
 
@@ -65,22 +58,11 @@ void TextManager::DrawText(char a_StringToDraw[], float a_Height, int a_Justific
 
 	glDrawElements(GL_TRIANGLES, indexcount, GL_UNSIGNED_SHORT, indicies);
 
-
-	
-
-
 	m_Shader->DisableAttributes();
-
-
-
 }
 
 void TextManager::Initialize(char* a_FontPath, Shader* a_Shader)
 {
-
-
-
-
 	m_pFont = new BitmapFont(a_FontPath);
 	char tempfontfilename[MAX_PATH];
 
@@ -89,8 +71,6 @@ void TextManager::Initialize(char* a_FontPath, Shader* a_Shader)
 	m_Shader = a_Shader;
 	 
 	m_Shader->LoadShaderProgram();
-
-	
 }
 
 void TextManager::PullShaderHandles()
@@ -102,10 +82,7 @@ void TextManager::PullShaderHandles()
 		m_Shader->setAttributeLocation("a_Position");
 		m_Shader->setAttributeLocation("a_Tint");
 		m_Shader->setAttributeLocation("a_UVCoord");
-
 	}
-
-
 }
 
 void TextManager::RenderSetup(Matrix* pWVP)
@@ -126,5 +103,4 @@ void TextManager::RenderSetup(Matrix* pWVP)
 		glBindTexture( GL_TEXTURE_2D, m_FontTextureID);
 		glUniform1i( TexColHandle, 0);
 	}
-		
 }

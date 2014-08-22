@@ -1,8 +1,5 @@
 #include "CommonHeader.h"
 
-
-
-
 Game::Game()
 {
 	PlayerKeys* Player1 = new PlayerKeys;
@@ -20,8 +17,6 @@ Game::Game()
 	mSkySphere = new Entity();
 	mTeam1Net = new Net();
 	mTeam2Net = new Net();
-	
-	
 
 	mEntityList.push_back((Entity*)mPlayer);
 	mEntityList.push_back((Entity*)mPlayer2);
@@ -30,22 +25,15 @@ Game::Game()
 	mEntityList.push_back((Entity*)mTeam2Net);
 	mEntityList.push_back(mStadium);
 	mEntityList.push_back(mSkySphere);
-
-
 }
 
 Game::~Game()
 {
-
-
 }
 
 void Game::Initialize()
 {
-
 	Material* RedMaterial;
-
-
 
 	mCameraDistance = 300.0f;
 	mPlayer->Initialize();
@@ -71,17 +59,11 @@ void Game::Initialize()
 	
 
 	mPhysicsManager = new PhysicsManager(mEntityList, playingField);
-
-	
-
-	
-	
 }
-
 
 float fLerp(float start, float end, float percent)
 {
-     return (start + percent*(end - start));
+	return (start + percent*(end - start));
 }
 
 void Game::Update(double pElapsedTime)
@@ -90,15 +72,11 @@ void Game::Update(double pElapsedTime)
 	{
 		mEntityList.at(i)->Update(pElapsedTime);
 	}
-	
 
-
-	
 	//CameraAbove
 	//gCamera->Position()->Set(0, 2500.0f,0);
 	//gCamera->GetViewProjection()->SetLookAtRH( *gCamera->Position(), Vector3(1,0,0), Vector3(0,0,0));
 
-	
 	//CameraFollowTarget
 	double angle = mPlayer->mRotationRate * PI / 180;
 		
@@ -106,17 +84,15 @@ void Game::Update(double pElapsedTime)
 	float ForwardX = -cos( angle ) * mCameraDistance;
 
 	//CameraFollow
-	
+
 	gCamera->Position()->Set(
 		fLerp(gCamera->Position()->x,mPlayer->GetPosition()->x + ForwardX,pElapsedTime * 5.0f),
 		fLerp(gCamera->Position()->y,mPlayer->GetPosition()->y + 100.0f,pElapsedTime * 5.0f),
 		fLerp(gCamera->Position()->z,mPlayer->GetPosition()->z + ForwardZ,pElapsedTime * 5.0f));
 
-
 	//gCamera->Position()->Set(mPlayer->GetPosition()->x + ForwardX,mPlayer->GetPosition()->y + 100.0f,mPlayer->GetPosition()->z + ForwardZ);
 	gCamera->GetViewProjection()->SetLookAtRH( *gCamera->Position(), Vector3(0,1,0), *mPlayer->GetPosition());
 	//gCamera->GetViewProjection()->SetLookAtRH( m, Vector3(0,1,0), *mPlayer->GetPosition());
-	
 
 	mPhysicsManager->ApplyPhysics(pElapsedTime);
 
@@ -140,36 +116,17 @@ void Game::Update(double pElapsedTime)
 		mBall->GetVelocity()->Set(mBall->GetVelocity()->x + mPlayer2->GetVelocity()->x,mPlayer2->GetVelocity()->y,mBall->GetVelocity()->z + mPlayer2->GetVelocity()->z);
 	}
 
-	
-
-
-
 	if(gCollisionManager->isCollided((Entity*)mTeam1Net,(Entity*)mBall))
 	{
-
-		
 	}
 		
 	if(gCollisionManager->isCollided((Entity*)mTeam2Net,(Entity*)mBall))
 	{
-
 	}
-
-
-
-
-	
-
-
-
-
-
-
 }
 
 void Game::Draw()
 {
-
 	//Still a bug with the texture manager not rendering font image.
 	//gTextManager->DrawText("Player 1",100, Justify_CenterX && Justify_CenterY, Vector3(0,0,1), Vector3(0,0,0),gCamera);
 
@@ -177,12 +134,4 @@ void Game::Draw()
 	{
 		mEntityList.at(i)->Draw();
 	}
-
-
-	
-	
 }
-
-
-
-

@@ -1,19 +1,12 @@
 #include "CommonHeader.h"
 
-
 Entity::Entity()
 {
-	
-
 }
-
 
 Entity::~Entity()
 {
-
-
 }
-
 
 void Entity::Initialize(MeshObject* pModel, GLuint pTextureID, Shader* pShader)
 {
@@ -22,13 +15,11 @@ void Entity::Initialize(MeshObject* pModel, GLuint pTextureID, Shader* pShader)
 	mModel = pModel;
 	mTextureID = pTextureID;
 	mShader = pShader;
-	
+
 	mMaterial = new Material;
-	
 
 	mShader->LoadShaderProgram();
 	PullShaderHandles();
-
 
 	glBindTexture( GL_TEXTURE_2D, mTextureID );
 
@@ -37,17 +28,11 @@ void Entity::Initialize(MeshObject* pModel, GLuint pTextureID, Shader* pShader)
 
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
-
-	
-
-
 }
 
 void Entity::Update(double pElapsedTime)
 {
-
 }
-
 
 void Entity::Draw()
 {
@@ -65,7 +50,6 @@ void Entity::Draw()
 
 		worldviewproj.Multiply( &viewProj );
 
-
 		RenderSetup(&viewProj);
 		GLuint PositionHandle = mShader->getAttribute("a_Position");
 		GLuint TintHandle = mShader->getAttribute("a_Tint");
@@ -74,7 +58,6 @@ void Entity::Draw()
 		if(PositionHandle != -1)
 		{
 			glVertexAttribPointer(PositionHandle, 3, GL_FLOAT, GL_FALSE, sizeof(VertDef), &mModel->m_pVerts->pos );
-
 			glEnableVertexAttribArray( PositionHandle );
 		}
 
@@ -91,13 +74,9 @@ void Entity::Draw()
 		}
 
 		glDrawElements(GL_TRIANGLES, mModel->m_NumIndices, GL_UNSIGNED_SHORT, mModel->m_pIndices);
-
-
 	}
 
-
 	mShader->DisableAttributes();
-
 }
 
 void Entity::RenderSetup(Matrix* pWVP)
@@ -118,9 +97,7 @@ void Entity::RenderSetup(Matrix* pWVP)
 		glBindTexture( GL_TEXTURE_2D, mTextureID);
 		glUniform1i( TexColHandle, 0);
 	}
-		
 }
-
 
 void Entity::PullShaderHandles()
 {
@@ -131,15 +108,10 @@ void Entity::PullShaderHandles()
 		mShader->setAttributeLocation("a_Position");
 		mShader->setAttributeLocation("a_Tint");
 		mShader->setAttributeLocation("a_UVCoord");
-
 	}
-
-
 }
-
 
 MeshObject* Entity::GetModel()
 {
 	return mModel;
 }
-

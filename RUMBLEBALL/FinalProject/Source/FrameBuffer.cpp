@@ -1,6 +1,5 @@
 #include "CommonHeader.h"
 
-
 FrameBuffer::FrameBuffer()
 {
 	m_FBOHandle = 0;

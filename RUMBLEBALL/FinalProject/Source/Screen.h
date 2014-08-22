@@ -6,12 +6,8 @@
 class Screen
 {
 public:
-
-	
 	virtual void Update(double pElapsedTime) = 0;
 	virtual void Draw() = 0;
-
-
 };
 
 #endif

@@ -1,31 +1,19 @@
 #include "CommonHeader.h"
 
-
 Shader::Shader()
 {
-
 }
 
 Shader::Shader(const char* pShaderFileName)
 {
-
 	m_VertexShaderHandle = 0;
     m_FragmentShaderHandle = 0;
     m_ProgramHandle = 0;
-
-	
-
 	m_ShaderFileName = pShaderFileName;
-    
-    
-	
 }
-
 
 Shader::~Shader()
 {
-	
-
     glDetachShader( m_ProgramHandle, m_VertexShaderHandle );
     glDetachShader( m_ProgramHandle, m_FragmentShaderHandle );    
     glDeleteShader( m_VertexShaderHandle );
@@ -33,11 +21,8 @@ Shader::~Shader()
     glDeleteProgram( m_ProgramHandle );
 }
 
-
 void Shader::LoadShaderProgram()
 {
-
-
 	FILE* file;
     errno_t err = fopen_s( &file, m_ShaderFileName, "rb" );
 
@@ -58,22 +43,13 @@ void Shader::LoadShaderProgram()
         fclose( file );
     }
 
-
 	m_ProgramHandle = CreateProgram( length, buffer, length, buffer, &m_VertexShaderHandle, &m_FragmentShaderHandle );
 
 	delete buffer;
-
-
-
-
-	
-
-
 }
 
 GLuint Shader::getProgramHandle()
 {
-
 	return m_ProgramHandle;
 }
 
@@ -86,7 +62,6 @@ GLuint Shader::getProgramHandle()
 //{
 //	return m_Uniforms;
 //}
-
 
 GLuint Shader::LoadShader(GLenum shaderType, const char* pPreSource, int presourcelen, const char* pSource, int sourcelen)
 {
@@ -124,7 +99,6 @@ GLuint Shader::LoadShader(GLenum shaderType, const char* pPreSource, int presour
     }
 
     return shaderid;
-
 }
 
 GLuint Shader::CreateProgram(int vslen, const char* pVertexSource, int fslen, const char* pFragmentSource, GLuint* vsid, GLuint* fsid, int prevslen, const char* pPreVertexSource, int prefslen, const char* pPreFragmentSource)
@@ -158,10 +132,9 @@ GLuint Shader::CreateProgram(int vslen, const char* pVertexSource, int fslen, co
 
     // Attach the shaders to the program and attempt to link them.
     glAttachShader( programid, *vsid );
-    
-        
+
     glAttachShader( programid, *fsid );
-    
+
     glLinkProgram( programid );
     GLint linkStatus = GL_FALSE;
     glGetProgramiv( programid, GL_LINK_STATUS, &linkStatus );
@@ -186,66 +159,45 @@ GLuint Shader::CreateProgram(int vslen, const char* pVertexSource, int fslen, co
         *vsid = 0;
         *fsid = 0;
         return 0;
-
 	}
 
 	return programid;
 }
 
-
 void Shader::setAttributeLocation( const char* pAttributeName)
 {
-	
-		ShaderParameter Attribute;
-		Attribute.handleName = pAttributeName;
-		Attribute.ParameterHandle = -1;
-		Attribute.ParameterHandle = glGetAttribLocation( m_ProgramHandle, pAttributeName);
-	
-		m_Attributes.push_back(Attribute);
+	ShaderParameter Attribute;
+	Attribute.handleName = pAttributeName;
+	Attribute.ParameterHandle = -1;
+	Attribute.ParameterHandle = glGetAttribLocation( m_ProgramHandle, pAttributeName);
 
-		if(Attribute.ParameterHandle == -1 )
-            ErrorLog( "%s = -1\n", Attribute);
+	m_Attributes.push_back(Attribute);
 
-	
+	if(Attribute.ParameterHandle == -1 )
+		ErrorLog( "%s = -1\n", Attribute);
 }
-
 
 void Shader::setUniformLocation( const char* pUniformName)
 {
+	ShaderParameter Uniform;
+	Uniform.handleName = pUniformName;
+	Uniform.ParameterHandle = -1;
+	Uniform.ParameterHandle = glGetUniformLocation( m_ProgramHandle, pUniformName);
 
-		ShaderParameter Uniform;
-		Uniform.handleName = pUniformName;
-		Uniform.ParameterHandle = -1;
-		Uniform.ParameterHandle = glGetUniformLocation( m_ProgramHandle, pUniformName);
+	//GLint Uniform = glGetUniformLocation( m_ProgramHandle, uniformName);
 
+	m_Uniforms.push_back(Uniform);
 
-		//GLint Uniform = glGetUniformLocation( m_ProgramHandle, uniformName);
-
-		m_Uniforms.push_back(Uniform);
-
-		if(Uniform.ParameterHandle == -1 )
-            ErrorLog( "%s = -1\n", Uniform);
-
-	
+	if(Uniform.ParameterHandle == -1 )
+		ErrorLog( "%s = -1\n", Uniform);
 }
 
 void Shader::DisableAttributes()
 {
-
-	
-
 	for(int i = 0; i < m_Attributes.size() ; i++)
 	{
-
 		glDisableVertexAttribArray(m_Attributes.at(i).ParameterHandle);
-		 
-
-
 	}
-
-
-
-
 }
 
 GLuint Shader::getUniform(const char* pUniformName)
@@ -273,7 +225,3 @@ GLuint Shader::getAttribute(const char* pAttributeName)
 	return -1;
 	ErrorLog("No shader attribute named ", pAttributeName);
 }
-
-
-
-

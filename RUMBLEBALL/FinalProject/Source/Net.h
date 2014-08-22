@@ -20,7 +20,6 @@ public:
 	void Draw();
 
 private:
-
 	std::vector<MeshObject*> m_NetModels;
 	MeshObject* mNetBack;
 	MeshObject* mNetFrame;
@@ -29,8 +28,6 @@ private:
 	MeshObject* mNetTop;
 
 	//MeshObject 
-
-
 };
 
 #endif

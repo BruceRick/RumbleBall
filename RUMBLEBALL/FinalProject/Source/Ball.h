@@ -7,7 +7,6 @@ public:
 	Ball();
 	~Ball();
 
-
 	void Initialize();
 	void PullShaderHandles();
 	void RenderSetup(Matrix* pWVP);
@@ -21,11 +20,6 @@ public:
 
 	virtual void Update(double pElapsedTime);
 	virtual void Draw();
-
-
-
-private:
-
 };
 
 #endif

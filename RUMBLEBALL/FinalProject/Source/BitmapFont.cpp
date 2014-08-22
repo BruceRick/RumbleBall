@@ -1,7 +1,5 @@
 #include "CommonHeader.h"
 
-
-
 BitmapFont::BitmapFont(char* filename)
 {
     m_Initialized = false;
@@ -183,7 +181,6 @@ int BitmapFont::GenerateVerts(char* string, VertDef* verts, GLushort* indices, f
 {
 	for( int j=0; j<strlen(string)*6; j++ )
     {
-		
 		verts[j].pos[2] = 0;
         verts[j].col[0] = color.x;
         verts[j].col[1] = color.y;
@@ -199,26 +196,16 @@ int BitmapFont::GenerateVerts(char* string, VertDef* verts, GLushort* indices, f
 
 	for(int stringPos = 0; stringPos < strlen(string); stringPos++)
 	{
-	
-		
-
 		for(int charPos = 0; charPos < m_NumChars; charPos++)
 		{
 			if(string[stringPos] == m_Chars[charPos].id)
 			{
 				cc = &m_Chars[charPos];
-
-
-				
-					
-				
 			}
 		}
-		
 
 		if(m_YOffset < cc->height)
 			m_YOffset = cc->height;
-	
 
 		float texw = m_Properties.scaleW;
 		float texh = m_Properties.scaleH;
@@ -228,11 +215,6 @@ int BitmapFont::GenerateVerts(char* string, VertDef* verts, GLushort* indices, f
 
 		float vtop = (texh - cc->y) / texh;
 		float vbottom = (texh - cc->y - cc->height) / texh;
-
-	
-
-		
-
 
 		// upper left
 		verts[stringPos*4].pos[0] = (m_XOffset) * scale;
@@ -258,7 +240,6 @@ int BitmapFont::GenerateVerts(char* string, VertDef* verts, GLushort* indices, f
 		verts[stringPos*4 + 3].uv[0] = uright;
 		verts[stringPos*4 + 3].uv[1] = vbottom;
 
-
 		indices[stringPos*6] =   stringPos*4;
 		indices[stringPos*6+1] = stringPos*4+1;
 		indices[stringPos*6+2] = stringPos*4+2;
@@ -266,21 +247,16 @@ int BitmapFont::GenerateVerts(char* string, VertDef* verts, GLushort* indices, f
 		indices[stringPos*6+4] = stringPos*4+2;
 		indices[stringPos*6+5] = stringPos*4+3;
 
-
 		if(cc->id == 121 || cc->id == 112 || cc->id == 113 || cc->id == 103 || cc->id == 106)
 		{
 			verts[stringPos*4].pos[1]-= cc->yoffset * scale;
 			verts[stringPos*4 + 1].pos[1] -= cc->yoffset * scale;
 			verts[stringPos*4 + 2].pos[1] -= cc->yoffset* scale;
 			verts[stringPos*4 + 3].pos[1] -= cc->yoffset * scale;
-
-
 		}
 
-		
 		m_XOffset += cc->width;
 	}
-
 
 	for(int i = 0; i < 6*strlen(string); i++)
 	{

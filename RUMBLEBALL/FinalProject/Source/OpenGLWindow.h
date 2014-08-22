@@ -28,11 +28,6 @@ public:
 	const char* mWindowTitle;
 	double mPreviousTime;
 	GameManager* mGameManager;
-
-
 };
 
 #endif
-
-
-
